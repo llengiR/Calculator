@@ -1,0 +1,126 @@
+  ┌─────────────────────────────────────────────────────────────
+  ────┐
+  │                           CALCULATOR
+       │
+  │                        (Main Application)
+      │
+  └─────────────────────────────────────────────────────────────
+  ────┘
+                                      │
+                                      │ uses
+                                      ▼
+  ┌─────────────────────────────────────────────────────────────
+  ────┐
+  │                     CalculatorController
+      │
+  │                        (Controller)
+      │
+  │ ────────────────────────────────────────────────────────────
+  ─── │
+  │ + Run(isInteractive: bool)
+      │
+  │ - RunInteractiveMode()
+      │
+  │ - RunBatchMode()
+      │
+  │ - ProcessExpression(expression: string)
+      │
+  └─────────────────────────────────────────────────────────────
+  ────┘
+                      │                           │
+                  uses │                           │ uses
+                      ▼                           ▼
+  ┌───────────────────────────┐
+  ┌─────────────────────────────┐
+  │      RPNCalculator        │        │        VIEW CLASSES
+       │
+  │       (Model)             │        │
+       │
+  │ ───────────────────────── │        │ IInputProvider
+       │
+  │ + Evaluate(expr: string)  │        │ + GetNextLine(): string
+       │
+  │ - ParseToken(token: str)  │        │
+       │
+  │ - ProcessStack()          │        │ IOutputProvider
+       │
+  └───────────────────────────┘        │ + WriteLine(msg:
+  string)    │
+                  │                    │
+       │
+              uses │                    │ ConsoleInputProvider
+        │
+                  ▼                    │ FileInputProvider
+       │
+  ┌───────────────────────────┐        │ ConsoleOutputProvider
+       │
+  │       IStack<Token>       │        │ FileOutputProvider
+       │
+  │      (Interface)          │
+  └─────────────────────────────┘
+  │ ───────────────────────── │
+  │ + Push(item: Token)       │
+  │ + Pop(): Token            │
+  │ + IsEmpty: bool           │
+  │ + Count: int              │
+  └───────────────────────────┘
+                  │
+           implements
+                  ▼
+  ┌───────────────────────────┐
+  │       TokenStack          │
+  │   (Implementation)        │
+  │ ───────────────────────── │
+  │ - _items: List<Token>     │
+  │ + Push(item: Token)       │
+  │ + Pop(): Token            │
+  │ + IsEmpty: bool           │
+  │ + Count: int              │
+  └───────────────────────────┘
+                  │
+              stores
+                  ▼
+  ┌───────────────────────────┐
+  │         Token             │
+  │      (Abstract)           │
+  │ ───────────────────────── │
+  │ + ToString(): string      │
+  └───────────────────────────┘
+                  │
+                  │ inherits
+          ┌───────┴───────┐
+          ▼               ▼
+  ┌─────────────┐   ┌─────────────┐
+  │   Operand   │   │  Operator   │
+  │             │   │ (Abstract)  │
+  │ ─────────── │   │ ─────────── │
+  │ + Value:    │   │ + Symbol:   │
+  │   double    │   │   string    │
+  │ + ToString()│   │ + Calculate │
+  └─────────────┘   │   (l,r):dbl │
+                    │ + ToString()│
+                    └─────────────┘
+                          │
+                     inherits
+                ┌─────────┼─────────┐
+                ▼         ▼         ▼
+          ┌──────────┐ ┌──────┐ ┌────────┐
+          │SumOperator│ │ ... │ │ModulusOp│
+          │          │ │     │ │        │
+          │+ Calculate│ │     │ │+ Calc..│
+          └──────────┘ └─────┘ └────────┘
+
+  ┌─────────────────────────────────────────────────────────────
+  ────┐
+  │                     EXCEPTION CLASSES
+      │
+  │
+      │
+  │ DivideByZeroException
+     │
+  │ InvalidTokenException
+     │
+  │ InvalidOperationException
+     │
+  └─────────────────────────────────────────────────────────────
+  ────┘
