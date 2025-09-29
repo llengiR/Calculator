@@ -1,11 +1,19 @@
 namespace Calculator.Model.Exceptions
 
 {
+    ///<summary>
+    /// Represents a exeption when trying to divde a number by zero.
+    ///</summary>
     public class DivideByZeroException : Exception
     {
-        // left operator
+        ///<summary>
+        /// Gets the left operator i.e the value being divided.
+        ///</summary>
         public double Dividend { get; }
-        // right operator 
+        ///<summary>
+        /// Gets the right operator i.e the divisor. 
+        /// Will be zero when the exeption is used.
+        ///</summary>
         public double Divisor { get; }
 
         // set up error
@@ -23,3 +31,4 @@ namespace Calculator.Model.Exceptions
         }
     }
 }
+
