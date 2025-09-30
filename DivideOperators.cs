@@ -1,16 +1,18 @@
+using Calculator.Model.Exceptions;
+using DivideByZeroException = Calculator.Model.Exceptions.DivideByZeroException;
 namespace Calculator.Model.Tokens
 
 {
     /// <summary>
     /// An addition operator (+) that adds two numbers together.
     /// </summary>
-    public class SumOperator = Operator:
+    public class DivideOperator : Operator
     {
         /// <summary>
         /// Initializes new instance of <see cref="SumOperator"/> class.
         /// And registers its symbol with the base <see cref="Operator"/>.
         /// </summary>
-        public SumOperator() : base("/");
+        public DivideOperator() : base("/");
         {
             
         }
@@ -23,7 +25,11 @@ namespace Calculator.Model.Tokens
     /// <returns>The resulting sum of <param name="left"/> + <param name="right"/>.</returns>
     public override double Calculate(double left, double right)
     {
-        return left / right; 
+        if(right == 0)
+        {
+            throw new DivideByZeroException(left, right);
+        }
+        return left / right;
     }
     }
 }
