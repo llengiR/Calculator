@@ -1,18 +1,31 @@
 namespace Calculator.Model
 {
-    // how the stack should work. Using interface if wantinf to change stack
+    /// <summary>
+    /// Defines a stack where you can change or implement new featsures
+    /// without having to change the rest of the code.
+    /// </summary>
+    /// <typeparam name="T">Represents the type of element stored in the stack.</typeparam>
     public interface IStack<T>
     {
-        // Add item on top of stack
+        /// <summary>
+        /// Add item on top of stack.
+        /// </summary>
+        /// <param name="item">The item that's pushed onto the stack.</param>
         void Push(T item);
 
-        // Remove and return top item from stack
+        /// <sumary>
+        /// Remove and return top item from stack
+        /// </summary>
         T Pop();
 
-        // Check if stack is empty
+        /// <summary>
+        /// Check if stack is empty
+        /// </summary>
         bool IsEmpty { get; }
 
-        // Number of items
+        /// <summary>
+        /// Number of items in the stack
+        /// </summary>
         int Count { get; }
     }
       
