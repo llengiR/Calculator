@@ -1,22 +1,37 @@
 namespace Calculator.Model.Tokens
 
 {
-    // all math operations
+    /// <summary>
+    /// all math operations (-,+,*,%,/).
+    /// </summary>
     public abstract class Operator : Token
     {
-        // what symbol
+        /// <summary>
+        /// Gets the symbol that is being used.
+        /// </summary>
         public string Symbol {get; }
 
-        //giver operator the written symbol
+        /// <summary>
+        /// Makes a new operator with the given symbol.
+        /// </summary>
+        /// <param name="symbol">The text for the operator.</param>
         protected Operator(string symbol)
         {
             Symbol = symbol;
         }
 
-        // create first and seccond number
+        /// <summary>
+        /// Does the math with two numbers.
+        /// </summary>
+        /// <param name="left">The first number given.</param>
+        /// <param name="right">The second number given.</param>
+        /// <returns>The result of the operation.</returns>
         public abstract double Calculate(double left, double right);
 
-        // show operator as text
+        /// <summary>
+        /// show the operator as a text.
+        /// </summary>
+        /// <returns>The operator symbol.</returns>
         public override string ToString()
         {
             return Symbol;
