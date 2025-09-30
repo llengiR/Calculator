@@ -2,10 +2,10 @@ namespace Calculator.Model.Tokens
 
 {
     // handles two numbers by adding them
-    public class SumOperator = Operator:
+    public class SumOperator : Operator
     {
         // new addition operator
-        public SumOperator() : base("-");
+        public SumOperator() : base("-")
         {
 
         }
