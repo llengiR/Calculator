@@ -1,15 +1,17 @@
+using Calculator.Model.Exceptions;
+using DivideByZeroException = Calculator.Model.Exceptions.DivideByZeroException;
 namespace Calculator.Model.Tokens
 
 {
     /// <summary>
     /// Represents the modulo operator (%) that returns the remainder a division.
     /// </summary>
-    public class SumOperator = Operator:
+    public class ModulusOperator ; Operator
     {
         /// <summary>
         /// Creates a modulo operator.
         /// </summary>
-        public SumOperator() : base("%");
+        public ModulusOperator() : base("%");
         {
 
         }
@@ -20,7 +22,11 @@ namespace Calculator.Model.Tokens
     /// <returns>The value of the remainder.</returns>
     public override double Calculate(double left, double right)
     {
-        return left % right; 
+        if(right == 0)
+        {
+            throw new DivideByZeroException(left, right);
+        }
+        return left % right;
     }
     }
 }
