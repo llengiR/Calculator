@@ -6,7 +6,7 @@ namespace Calculator.Model.Tokens
     /// <summary>
     /// Represents the modulo operator (%) that returns the remainder a division.
     /// </summary>
-    public class ModulusOperator ; Operator
+    public class ModulusOperator : Operator
     {
         /// <summary>
         /// Creates a modulo operator.
