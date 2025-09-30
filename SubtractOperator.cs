@@ -1,16 +1,15 @@
 namespace Calculator.Model.Tokens
 
 {
-    // handles two numbers by adding them
-    public class SumOperator : Operator
+    // handles two numbers by subtracting them
+    public class SubtractOperator : Operator
     {
-        // new addition operator
-        public SumOperator() : base("-")
+        // new subtraction operator
+        public SubtractOperator() : base("-")
         {
-
         }
-    
-    // add first och second number
+
+        // subtract second number from first number
     public override double Calculate(double left, double right)
     {
         return left - right; 
