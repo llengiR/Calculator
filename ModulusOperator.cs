@@ -11,7 +11,7 @@ namespace Calculator.Model.Tokens
         /// <summary>
         /// Creates a modulo operator.
         /// </summary>
-        public ModulusOperator() : base("%");
+        public ModulusOperator() : base("%")
         {
 
         }
