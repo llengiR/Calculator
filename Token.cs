@@ -5,6 +5,6 @@ namespace Calculator.Model.Tokens
     public abstract class Token 
     {
         // Turns token into text that can be printed
-        abstract override string ToString();
+        public abstract override string ToString();
     }
 }
