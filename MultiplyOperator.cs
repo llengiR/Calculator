@@ -4,12 +4,12 @@ namespace Calculator.Model.Tokens
     /// <summary>
     /// Represents the multiplication operator (*) that returns the product of two numbers.
     /// </summary>
-    public class SumOperator = Operator:
+    public class MultiplyOperator : Operator
     {
         /// <summary>
         /// Creates the multiplication operator.
         /// </summary>
-        public SumOperator() : base("*");
+        public MultiplyOperator() : base("*")
         {
 
         }
