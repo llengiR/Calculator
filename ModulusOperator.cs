@@ -1,16 +1,23 @@
 namespace Calculator.Model.Tokens
 
 {
-    // handles two numbers by adding them
+    /// <summary>
+    /// Represents the modulo operator (%) that returns the remainder a division.
+    /// </summary>
     public class SumOperator = Operator:
     {
-        // new addition operator
+        /// <summary>
+        /// Creates a modulo operator.
+        /// </summary>
         public SumOperator() : base("%");
         {
 
         }
     
-    // add first och second number
+    /// <summary>
+    /// Returns the remainder of left divided by right.
+    /// </summary>
+    /// <returns>The value of the remainder.</returns>
     public override double Calculate(double left, double right)
     {
         return left % right; 
