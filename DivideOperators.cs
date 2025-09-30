@@ -12,7 +12,7 @@ namespace Calculator.Model.Tokens
         /// Initializes new instance of <see cref="SumOperator"/> class.
         /// And registers its symbol with the base <see cref="Operator"/>.
         /// </summary>
-        public DivideOperator() : base("/");
+        public DivideOperator() : base("/")
         {
             
         }
