@@ -5,20 +5,32 @@ using Calculator.Model.Exceptions;
 using InvalidOperationException = Calculator.Model.Exceptions.InvalidOperationException;
 namespace Calculator.Model
 {
-    // handles RPN calc
+    /// <summary>
+    /// Handles RPN (reverse polish notation) calculations.
+    /// </summary>
     public class RpnCalculator
     {
-        // stack to store tokens
+        /// <summary>
+        /// Stores the given tokens (numbers and operators) in a stack.
+        /// </summary>
         private IStack<Token> stack;
 
-        //constructor creates calc with empty stack
+        /// <summary>
+        /// Constructor creates calc with empty stack
+        /// </summary>
         public RpnCalculator()
         {
             // creates new instance
             stack = new Stack<Token>();
         }
 
-        //takes rpn string and returns results
+        /// <summary>
+        /// Takes an RPN string and returns the  results.
+        /// </summary>
+        /// <param name="rpnExpression">The RPN expression, tokens separated by spaces.</param>
+        /// <returns>The result of the RPN calculation.</returns>
+        /// <exception cref="InvalidTokenException">Thrown if the is a invalid token or empty token stack.</exception>
+        /// <exception cref="InvalidOperationException">Thrown if the RPN expression is deformed.</exception>
         public double Calculate(string rpnExpression)
         {
             if(string.IsNullOrWhiteSpace(rpnExpression))
@@ -40,7 +52,9 @@ namespace Calculator.Model
             return result;
         }
 
-        // split RPN string to tokens
+        /// <summary>
+        /// Splits and converts the input text into tokens.
+        /// </summary>
         private Token[] ParseTokens(string expression)
         {
             string[] parts = expression.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -54,7 +68,9 @@ namespace Calculator.Model
             return tokens;   
         }
 
-        // Convert string to token
+        /// <summary>
+        /// Convert string to token
+        /// </summary>
         private Token CreateToken(string tokenString)
         {
             // try parse as number
@@ -86,7 +102,13 @@ namespace Calculator.Model
             }
         }
 
-        //process token using RPN Algorithm
+        /// <summary>
+        /// Process tokens using RPN Algorithm, read tokens left to right, push numbers,
+        /// when finding a operator pop two numbers and apply it then push the result.
+        /// </summary>
+        /// <returns>The number thats left after all calculations (the result).</returns>
+        /// <exception cref="InvalidOperationException">Thrown if there is not enough numbers for an operator
+        /// or if there is more than one number left in the stack after the calculations.</exception>
         private double ProcessTokens()
         {
             // Create a separate stack for values
@@ -128,7 +150,9 @@ namespace Calculator.Model
             return valueStack.Pop();
         }
 
-        // Helper method to get tokens in original left-to-right order
+        /// <summary>
+        /// Helper method to get tokens in original left-to-right order
+        /// </summary>
         private Token[] GetTokensInOriginalOrder()
         {
 
