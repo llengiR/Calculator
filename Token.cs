@@ -1,10 +1,15 @@
 namespace Calculator.Model.Tokens
 
-// Base class for numbers and operators
+/// <summary>
+/// Base class for numbers and operators
+/// </summary>
 {
     public abstract class Token 
     {
-        // Turns token into text that can be printed
+        /// <summary>
+        /// How the token should look like as text.
+        /// </summary>
+        /// <returns>The token as a string.</returns>
         public abstract override string ToString();
     }
 }
