@@ -4,20 +4,29 @@ using Calculator.View;
 
 namespace Calculator.Controller
 {
+    /// <summsary>
+    /// Makes the app able to read inputs, run the calculator and show outputs.
+    /// </summary>
     public class CalculatorController
     {
         //counter with rpn calcs
         private RpnCalculator calculator;
         private ConsoleView consoleView;
 
-        //constructor
+        /// <summary>
+        /// Constructs a controller with a calculator and console view.
+        /// </summary>
         public CalculatorController()
         {
             calculator = new RpnCalculator();
             consoleView = new ConsoleView();
         }
 
-        //main method
+        /// <summary>
+        /// start point of the app. No args = interactive mode.
+        /// two args = file mode.
+        /// </summary>
+        /// <param name="args">Command-line args, no args for console or two for file mode.</param>
         public void Run(string[] args)
         {
             // no args = interacvtive console mode
@@ -36,7 +45,9 @@ namespace Calculator.Controller
             }
         }
 
-        //console mode - keeps asking for input until quit
+        /// <summary>
+        /// Console mode - keeps asking for input until quit.
+        /// </summary>
         private void RunConsoleMode()
         {
             while(true)
@@ -63,7 +74,11 @@ namespace Calculator.Controller
             }
         }
 
-        // runs file mode - read from input file, writes to output
+        /// <summary>
+        /// runs file mode - read from input file, writes to output
+        /// </summary>
+        /// <param name="inputFilePath">Path to input file with RPN expressions.</param>
+        /// <param name="outputFilePath">Path to output file where outputs and errors are written.</param>
         private void RunFileMode(string inputFilePath, string outputFilePath)
         {
             //create file handler with inout and output
