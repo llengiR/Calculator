@@ -3,22 +3,37 @@ using System.IO;
 
 namespace Calculator.View
 {
+    /// <summary>
+    /// Reads RPN expressions from a file and writes the result in another file.
+    /// </summary>
     public class FileView
     {
-        // input file path
+        /// <summary>
+        /// Input file path
+        /// </summary>
         public string InputFilePath { get; }
 
-        // output file path
+        /// <summary>
+        /// Output file path
+        /// </summary>
         public string OutputFilePath{ get; }
 
-        //constructor
+        /// <summary>
+        /// Constructor for input and output paths.
+        /// </summary>
+        /// <param name="inputFilePath">Where to read input expressions from.</param>
+        /// <param name="outputFilePath">Where to write output (results or errors).</param>
         public FileView(string inputFilePath, string outputFilePath)
         {
             InputFilePath = inputFilePath;
             OutputFilePath = outputFilePath;
         }
 
-        // read rpn expressions
+        /// <summary>
+        /// Read RPN expressions from file.
+        /// </summary>
+        /// <returns>Array of lines from file.</returns>
+        /// <exception cref="Exception">Thrown if the file cant be read.</exception>
         public string[] GetAllInputs()
         {
             try
@@ -34,7 +49,11 @@ namespace Calculator.View
             }
         }
 
-        //write result to output.txt
+        /// <summary>
+        /// Write result to output.txt
+        /// </summary>
+        /// <param name="result">The result to write in the output file.</param>
+        /// <exception cref="Exception">Thrown if the output file can't be written.</exception>
         public void WriteResult(double result)
         {
             try
@@ -49,7 +68,11 @@ namespace Calculator.View
             }
         }
 
-        //write error message to output.txt
+        /// <summary>
+        /// Write error message to output.txt
+        /// </summary>
+        /// <param name="exception">The error to write.</param>
+        /// <exception cref="Exception">Thrown if the file can't be written.</exception>
         public void WriteError(Exception exception)
         {
             try
